@@ -1,0 +1,16 @@
+#preview{
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+#preview h1{
+    font-size: 175%;
+    margin-bottom: 20px;
+}
+#preview h5{
+    font-weight: 300;
+}
+
+#preview .site-url{
+    color: blue;
+}
