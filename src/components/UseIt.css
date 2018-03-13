@@ -1,0 +1,14 @@
+#useit{
+    background-color: white;
+    margin-top: 40px;
+    /* box-shadow: inset 1px 1px 5px 1px rgba(0,0,0,.1); */
+    padding: 20px;
+}
+
+#useit h1{
+    margin-bottom: 20px;
+}
+
+#useit h4{
+    font-weight: 300;
+}

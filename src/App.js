@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Preview from './components/Preview';
 import ShareButtons from './components/ShareButtons';
+import UseIt from './components/UseIt';
+import About from './components/About';
 
 class App extends Component {
 
@@ -18,21 +20,12 @@ class App extends Component {
   render() {
     return <main role="main" className="container">
         {/* <div className="header">You are sharing: {this.state.url}</div> */}
-        <div id="shareaction">
+        <div id="shareaction" className="effect5">
           <Preview url={this.state.url} title={this.state.title} img={this.state.img} description={this.state.description} />
           <ShareButtons />
         </div>
-        <div id="useit" className="container">
-          <div className="row">
-            <div className="col-sm">
-              <h1>Want to use it for your website? </h1>
-              <p>
-                Just put a link to this page from your website. It
-                automatically fetches all the sharing parameters for you.
-              </p>
-            </div>
-          </div>
-        </div>
+        <UseIt />
+        <About />
       </main>;
   }
 }

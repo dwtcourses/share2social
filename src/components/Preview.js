@@ -8,7 +8,7 @@ class Preview extends Component {
 //   }
   render() {
     return (
-      <div id="preview">
+      <div id="preview" className="effect1">
         {/* <h1>This is what you will be sharing</h1> */}
         <div className="media">
           <img
