@@ -66,7 +66,7 @@ class ShareButtons extends Component {
 
                 },
                 {
-                    name: "googleplus",
+                    name: "ycombinator",
                     label: "Y Combinator",
                     url: "https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fnews.ycombinator.com%2Fbookmarklet.html&t=Y%20Combinator%3A%20Bookmarklet",
                     icon:{
