@@ -1,5 +1,6 @@
 {
   "name": "share2social",
+  "description": "Share 2 Social is an easier way to let your visitors share your web pages without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
