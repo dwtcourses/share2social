@@ -10,11 +10,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      url: 'http://google.com',
-      title: 'this is a title',
-      img: 'https://www.drupal.org/files/images/pagepreview_screenshot_0.png',
-      description:
-        'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.'
+      url: 'loading url...',
+      title: 'loading title...',
+      image: 'http://gifimage.net/wp-content/uploads/2017/09/animated-loading-gif-2.gif',
+      description: 'loading description...'
     };
   }
 
@@ -28,24 +27,6 @@ class App extends Component {
   }
 
   fetchExternalHTML(url, base_url) {
-    /*
-    <meta property="og:url" content="https://github.com">
-    <meta property="og:site_name" content="GitHub">
-    <meta property="og:title" content="Build software better, together">
-    <meta property="og:description" content="GitHub is where people build software. More than 27 million people use GitHub to discover, fork, and contribute to over 80 million projects.">
-    <meta property="og:image" content="https://assets-cdn.github.com/images/modules/open_graph/github-logo.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
-    <meta property="og:image" content="https://assets-cdn.github.com/images/modules/open_graph/github-mark.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="620">
-    <meta property="og:image" content="https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="620">
-    */
 
     const new_url = 'https://cors-anywhere.herokuapp.com/' + url;
     axios
@@ -62,53 +43,99 @@ class App extends Component {
 
   extractInfo(data, site_url, base_url){
     let website_object = { url: site_url };
-
-    // console.log(data);
-    const parser = new DOMParser();
-    const htmlDoc = parser.parseFromString(data, 'text/html');
-
-    // Now we start getting attributes of title, description and image.
-
-    // Get the title
     let title = this.getParameterByName('title', base_url);
-    console.log('title in url is ', title);
-    if(!title){
-      const titles = htmlDoc.getElementsByTagName('title');
-      if(titles.length>0){ 
-        title = titles[titles.length - 1].innerHTML;
-      }else {
-        title = "Click here to set title";
-      }
-    }
-    website_object.title = title;
-    
-    // Get description
     let description = this.getParameterByName('description', base_url);
-    console.log('description in url is ', description);
+    let image = this.getParameterByName('image', base_url);
 
-    if(!description){
-      // get description from meta og:description
+    let htmlDoc, htmlBaseDoc;
 
-      let descriptions = htmlDoc.querySelectorAll('[name="description"]');
-      console.log("Descriptions are ", descriptions);
-
-      if(descriptions.length > 0){
-        description = descriptions[descriptions.length - 1].content;
-        if(!description){
-          description = 'Click here to set description';
-        }
-      }else {
-        description = "Click here to set description";
+    if(title && description && image){
+      website_object.title = title;
+      website_object.description = description;
+      website_object.image = image;
+    }else{
+      const parser = new DOMParser();
+      htmlBaseDoc = parser.parseFromString(data, 'text/html');
+      const head_tag = htmlBaseDoc.getElementsByTagName('head');
+      let head_html = '';
+      if(head_tag){
+        head_html = head_tag[0].innerHTML;
+        htmlDoc = parser.parseFromString(head_html, 'text/html');
       }
+      // Now we start getting attributes of title, description and image.
+
+      // Get the title
+      if(!title){
+        const titles = htmlDoc.getElementsByTagName('title');
+        console.log('titles are ', titles);
+        if(titles.length>0 && titles[0].innerHTML){ 
+          title = titles[0].innerHTML;
+        }else{
+          let og_titles = htmlDoc.querySelectorAll('meta[property="og:title"]');
+          console.log('og_titles is ', og_titles);
+          if (og_titles.length && og_titles[0].content) {
+            title = og_titles[0].content;
+            console.log('ogtitle waala title is ', title);
+          } else {
+            title = 'Click here to set title';
+          }
+        }
+      }
+      website_object.title = title;
+      
+      // Get description
+      if(!description){
+        let descriptions = htmlDoc.querySelectorAll('[name="description"]');
+        console.log("Descriptions are ", descriptions);
+
+        if (descriptions.length && descriptions[descriptions.length - 1 ].content) {
+          description = descriptions[descriptions.length - 1].content;
+        }else {
+        // get description from meta og:description
+        let og_descriptions = htmlDoc.querySelectorAll('meta[property="og:description]');
+        console.log("og_description is ", og_descriptions);
+        if(og_descriptions.length && og_descriptions[0].content){
+          description = og_descriptions[0].content;
+          console.log('og_description is', description);
+            if (!description) {
+              description = 'Click here to set description';
+            }
+          } else {
+            description = 'Click here to set description';
+          }
+        }
+      }
+      website_object.description = description;
+      console.log('website_object is ', website_object);
+
+      // Get image
+      if(!image){
+        // get image from meta og:image
+        let og_images = htmlDoc.querySelectorAll('meta[property="og:image"]');
+        console.log('og_images is ', og_images);
+        if (og_images.length && og_images[0].content) {
+          image = og_images[0].content;
+          console.log('og_image waala image is', image);
+        } else {
+            // Now we will load the first image from the body
+            let images = htmlBaseDoc.getElementsByTagName('img');
+            console.log('Images are ', images);
+            if(images.length){
+              image = images[0].src;
+              // if(strpos($src, 'http://sitename.com/path/') !== 0){
+              //   $img->setAttribute('src', "http://sitename.com/path/$src");
+              // }
+            }else{
+              image = '';
+            }
+        }
+      }
+      website_object.image = image;
+      console.log('website_object is ', website_object);
+      this.setState(website_object);
+
     }
-    website_object.description = description;
-    console.log('website_object is ', website_object);
-
-    var metas = htmlDoc.getElementsByTagName('meta'); 
-    // metas.map(meta => {return console.log(meta)})
-    console.log("metas are", metas)
-
-    this.setState(website_object);
+    // this.setState(website_object);
   }
 
   componentWillMount() {
@@ -132,7 +159,7 @@ class App extends Component {
           <Preview
             url={this.state.url}
             title={this.state.title}
-            img={this.state.img}
+            image={this.state.image}
             description={this.state.description}
           />
           <ShareButtons />

@@ -13,13 +13,14 @@ class Preview extends Component {
         <div className="media">
           <img
             className="align-self-start mr-3 site-preview"
-            src={this.props.img}
+            src={this.props.image}
             alt="Preview of {this.props.url}"
           />
           <div className="media-body">
             <h5 className="mt-0 site-title">{this.props.title}</h5>
             <p className="site_info">{this.props.description}</p>
             <p>URL: <span className="site-url">{this.props.url}</span></p>
+            {/* <p>Image: <span className="site-url">{this.props.image}</span></p> */}
           </div>
         </div>
       </div>
