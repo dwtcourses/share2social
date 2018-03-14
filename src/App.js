@@ -27,7 +27,7 @@ class App extends Component {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
-  fetchExternalHTML(url) {
+  fetchExternalHTML(url, base_url) {
     /*
     <meta property="og:url" content="https://github.com">
     <meta property="og:site_name" content="GitHub">
@@ -47,22 +47,12 @@ class App extends Component {
     <meta property="og:image:height" content="620">
     */
 
-    let website_object = {url: url};
     const new_url = 'https://cors-anywhere.herokuapp.com/' + url;
     axios
       .get(new_url)
       .then(response => {
         const data = response.data;
-        console.log(data);
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(data, 'text/html');
-        const titles = htmlDoc.getElementsByTagName('title'); 
-        website_object.title = titles[0].innerHTML;
-        console.log('website_object is ', website_object);
-
-        var meta_tags = document.getElementsByTagName('meta');
-        console.log(meta_tags);
-
+        this.extractInfo(data, url, base_url);
       })
       .catch(error => {
         // This is where you run code if the server returns any errors
@@ -70,17 +60,56 @@ class App extends Component {
       });
   }
 
-  // fetchExternalHTML(url) {
-  //   fetch(url, { mode: 'no-cors' }) // Call the fetch function passing the url of the API as a parameter
-  //     .then(function(result) {
-  //       // Your code for handling the data you get from the API
-  //       console.log('Loaded page ', result);
-  //     })
-  //     .catch(function(error) {
-  //       // This is where you run code if the server returns any errors
-  //       console.log('Got fetch error ', error);
-  //     });
-  // }
+  extractInfo(data, site_url, base_url){
+    let website_object = { url: site_url };
+
+    // console.log(data);
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(data, 'text/html');
+
+    // Now we start getting attributes of title, description and image.
+
+    // Get the title
+    let title = this.getParameterByName('title', base_url);
+    console.log('title in url is ', title);
+    if(!title){
+      const titles = htmlDoc.getElementsByTagName('title');
+      if(titles.length>0){ 
+        title = titles[titles.length - 1].innerHTML;
+      }else {
+        title = "Click here to set title";
+      }
+    }
+    website_object.title = title;
+    
+    // Get description
+    let description = this.getParameterByName('description', base_url);
+    console.log('description in url is ', description);
+
+    if(!description){
+      // get description from meta og:description
+
+      let descriptions = htmlDoc.querySelectorAll('[name="description"]');
+      console.log("Descriptions are ", descriptions);
+
+      if(descriptions.length > 0){
+        description = descriptions[descriptions.length - 1].content;
+        if(!description){
+          description = 'Click here to set description';
+        }
+      }else {
+        description = "Click here to set description";
+      }
+    }
+    website_object.description = description;
+    console.log('website_object is ', website_object);
+
+    var metas = htmlDoc.getElementsByTagName('meta'); 
+    // metas.map(meta => {return console.log(meta)})
+    console.log("metas are", metas)
+
+    this.setState(website_object);
+  }
 
   componentWillMount() {
     const ref_url = document.referrer;
@@ -92,7 +121,7 @@ class App extends Component {
 
     let site_url = url_in_param ? url_in_param : ref_url ? ref_url : my_url;
     console.log('site url is ', site_url);
-    this.fetchExternalHTML(site_url);
+    this.fetchExternalHTML(site_url, my_url);
   }
 
   render() {

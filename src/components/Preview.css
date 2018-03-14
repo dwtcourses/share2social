@@ -12,6 +12,9 @@
     font-weight: 300;
 }
 
+#preview .site-title{
+    font-weight: 300;
+}
 #preview .site-url{
     color: blue;
 }
