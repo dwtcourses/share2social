@@ -12,9 +12,14 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build && mv build docs",
+    "deploy": "gh-pages -b master -d docs",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }
