@@ -7,8 +7,8 @@ class UseIt extends Component {
         <div id="useit" className="container effect6">
           <div className="row">
             <div className="col-sm">
-              <h1> Do you want to use this page to share your website? </h1>
-              <p>Welcome to the easier way to let your visitors share your web pages without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.</p>
+              <h1> Use this page to share your website or repository too </h1>
+              <p>Welcome to the easier way to let the visitors to your visitors or github repository, share your web pages or github repo without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.</p>
               <h4>Super simple method</h4>
               <p>It could not get simpler than this. Just put a link to this page on your page, or copy and paste the following code on your web page. This page will get the referring url and extract necessary information from the title tag, meta tags and open graph meta tags from that web page.</p>
               <div>
