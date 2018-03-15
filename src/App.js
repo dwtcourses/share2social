@@ -133,7 +133,7 @@ class App extends Component {
       website_object.image = image;
       console.log('website_object is ', website_object);
       this.setState(website_object);
-
+      this.child.generateSocialUrls();
     }
     // this.setState(website_object);
   }
@@ -141,13 +141,12 @@ class App extends Component {
   componentWillMount() {
     const ref_url = document.referrer;
     const my_url = window.location.href;
-    console.log('Ref URL is ', ref_url);
+    // console.log('Ref URL is ', ref_url);
     // console.log('My URL is ', my_url);
     const url_in_param = this.getParameterByName('url', my_url);
     // console.log('URL in param is ', url_in_param);
 
     let site_url = url_in_param ? url_in_param : ref_url ? ref_url : my_url;
-    console.log('site url is ', site_url);
     this.fetchExternalHTML(site_url, my_url);
   }
 
@@ -162,7 +161,7 @@ class App extends Component {
             image={this.state.image}
             description={this.state.description}
           />
-          <ShareButtons />
+          <ShareButtons remoteSite={this.state} onRef={ref => (this.child = ref)} />
         </div>
         <UseIt />
         <About />

@@ -3,6 +3,23 @@ import './ShareButton.css';
 import social_icons from '../images/social-icons.jpg';
 
 class ShareButton extends Component {
+    handleClick(){
+        this.show_popup(this.props.url);
+    }
+
+    show_popup(url){
+        const height = 400, width = 800;
+        
+        const x = Math.floor(((window.screen.availWidth || 1024) - width) / 2),
+        y = Math.floor(((window.screen.availHeight || 700) - height) / 2);
+
+        var popup = window.open(url, 'share2social', 'width=' + width + ',height=' + height + ',left=' + x + ',top=' + y + ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+        if (popup) {
+            popup.focus();
+        }
+    }
+
     render(){
         let icon = null;
 
@@ -11,7 +28,7 @@ class ShareButton extends Component {
         }else{
             icon = <div className={'icon ' + this.props.name} style={{ backgroundImage: `url(${String(social_icons)})` }} />;
         }
-        return <div className="col-sm-2 share-button" title={"Click here to share on " + this.props.label}>
+        return <div className="col-sm-2 share-button" onClick={this.handleClick.bind(this)} title={"Click here to share on " + this.props.label}>
             {icon}
             {this.props.label}
           </div>;
