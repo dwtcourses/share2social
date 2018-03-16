@@ -12,7 +12,9 @@ To check it out in action, click https://share2social.com This will open the sha
 
 In your github or other README.md file or wiki page, put a link to this page https://share2social.com. If you want to set a custom anchor text, use the following tag
 
-`[Click here to share this repo](https://share2social.com)`
+`[Click here to share this repo](https://share2social.com)`  
+
+This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.
 
 #### Super simple method for any html page
 
@@ -20,7 +22,7 @@ It could not get simpler than this. Just put a link to this page on your page, o
 
 `<a href="https://share2social.com">Click here to share this page</a>`
 
-  
+This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.
 
 #### Pass a url
 
@@ -28,7 +30,7 @@ If you need to share a specific url, use a url parameter called **url** with the
 
 `<a href="https://share2social.com?url=http://yoursite.com">Click here to share this page</a>`
 
-  
+This page will automatically load the url that you passed, extract details from title and meta tags and create the share buttons for your url.
 
 #### Pass everything
 
