@@ -16,7 +16,7 @@ class UseIt extends Component {
                 <code>
                   [Click here to share this repo](https://share2social.com)
                 </code>
-                This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.
+                <p>This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.</p>
               </div>
               <br />
               <h4>Super simple method for any html page</h4>
@@ -25,7 +25,7 @@ class UseIt extends Component {
                 <code>
                   &lt;a href="https://share2social.com"&gt;Click here to share this page&lt;/a&gt;
                 </code>
-                This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.
+                <p>This page will automatically identify the referring url, extract details from title and meta tags and create the share buttons for your url.</p>
               </div>
               <br />
               <h4>Pass a url</h4>
@@ -34,7 +34,7 @@ class UseIt extends Component {
                 <code>
                   &lt;a href="https://share2social.com?url=http://yoursite.com"&gt;Click here to share this page&lt;/a&gt;
                 </code>
-                This page will automatically load this url that you passed in the url parameter, extract details from title and meta tags and create the share buttons for your url.
+                <p>This page will automatically load this url that you passed in the url parameter, extract details from title and meta tags and create the share buttons for your url.</p>
               </div>
               <br />
               <h4>Pass everything</h4>
