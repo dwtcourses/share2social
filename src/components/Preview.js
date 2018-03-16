@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import './Preview.css';
 
 class Preview extends Component {
-//   constructor() {
-//     super();
-//     console.log();
-//   }
+  // constructor() {
+  //   super();
+  // }
+
+  componentWillMount(){
+    // const state=Object.apply(this.props);
+    // this.setState(state);
+    // console.log('This state in preview is', state);
+  }
+
+  handleTitleClick(e){
+    // console.log('Title Clicked', e);
+    this.props.editTitle=true;
+  }
+
   render() {
     return (
       <div id="preview" className="effect1">
@@ -17,9 +28,15 @@ class Preview extends Component {
             alt="Preview of {this.props.url}"
           />
           <div className="media-body">
-            <h5 className="mt-0 site-title">{this.props.title}</h5>
+            <h5 className="mt-0 site-title">
+              <div onClick={this.handleTitleClick.bind(this)} contentEditable={this.props.editTitle}>
+                {this.props.title}
+              </div>
+            </h5>
             <p className="site_info">{this.props.description}</p>
-            <p>URL: <span className="site-url">{this.props.url}</span></p>
+            <p>
+              URL: <span className="site-url">{this.props.url}</span>
+            </p>
             {/* <p>Image: <span className="site-url">{this.props.image}</span></p> */}
           </div>
         </div>

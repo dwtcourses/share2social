@@ -5,6 +5,8 @@ import ShareButtons from './components/ShareButtons';
 import UseIt from './components/UseIt';
 import About from './components/About';
 import axios from 'axios';
+import img_loading from './images/animated-loading.gif';
+import img_notfound from './images/no-image.png';
 
 class App extends Component {
   constructor() {
@@ -12,7 +14,7 @@ class App extends Component {
     this.state = {
       url: 'loading url...',
       title: 'loading title...',
-      image: 'http://gifimage.net/wp-content/uploads/2017/09/animated-loading-gif-2.gif',
+      image: img_loading,
       description: 'loading description...'
     };
   }
@@ -53,6 +55,9 @@ class App extends Component {
       website_object.title = title;
       website_object.description = description;
       website_object.image = image;
+      this.setState(website_object);
+      this.child.generateSocialUrls();
+
     }else{
       const parser = new DOMParser();
       htmlBaseDoc = parser.parseFromString(data, 'text/html');
@@ -118,16 +123,16 @@ class App extends Component {
           console.log('og_image waala image is', image);
         } else {
             // Now we will load the first image from the body
-            let images = htmlBaseDoc.getElementsByTagName('img');
-            console.log('Images are ', images);
-            if(images.length){
-              image = images[0].src;
-              // if(strpos($src, 'http://sitename.com/path/') !== 0){
-              //   $img->setAttribute('src', "http://sitename.com/path/$src");
-              // }
-            }else{
-              image = '';
-            }
+            // let images = htmlBaseDoc.getElementsByTagName('img');
+            // console.log('Images are ', images);
+            // if(images.length){
+            //   image = images[0].src;
+            //   // if(strpos($src, 'http://sitename.com/path/') !== 0){
+            //   //   $img->setAttribute('src', "http://sitename.com/path/$src");
+            //   // }
+            // }else{
+              image = img_notfound;
+            // }
         }
       }
       website_object.image = image;

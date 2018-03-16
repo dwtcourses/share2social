@@ -30,7 +30,8 @@ class ShareButton extends Component {
         }
         return <div className="col-sm-2 share-button" onClick={this.handleClick.bind(this)} title={"Click here to share on " + this.props.label}>
             {icon}
-            {this.props.label}
+            <br />
+            <span className="share_label">{this.props.label}</span>
           </div>;
     }
 }
