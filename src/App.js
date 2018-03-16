@@ -96,18 +96,18 @@ class App extends Component {
         if (descriptions.length && descriptions[descriptions.length - 1 ].content) {
           description = descriptions[descriptions.length - 1].content;
         }else {
-        // get description from meta og:description
-        let og_descriptions = htmlDoc.querySelectorAll('meta[property="og:description]');
-        console.log("og_description is ", og_descriptions);
-        if(og_descriptions.length && og_descriptions[0].content){
-          description = og_descriptions[0].content;
-          console.log('og_description is', description);
-            if (!description) {
+          // get description from meta og:description
+          let og_descriptions = htmlDoc.querySelectorAll('meta[property="og:description]');
+          console.log("og_description is ", og_descriptions);
+          if(og_descriptions.length && og_descriptions[0].content){
+            description = og_descriptions[0].content;
+            console.log('og_description is', description);
+              if (!description) {
+                description = 'Click here to set description';
+              }
+            } else {
               description = 'Click here to set description';
             }
-          } else {
-            description = 'Click here to set description';
-          }
         }
       }
       website_object.description = description;
