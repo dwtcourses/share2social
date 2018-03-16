@@ -7,13 +7,13 @@ class About extends Component {
         <div id="about" className="container effect4">
           <div className="row">
             <div className="col-sm">
-              <h1>About Link Share</h1>
-              <p>Linkshare was built because there is no easy way to embed the share button in github and other repositories. Also whenever you put the social media provided sharing code, it not only loads very large javascript files for each social media, it also tracks all the visitors that come to your site. this causes not only a significant performance issue for your website, it is a serious threat to the privacy of your users. </p>
+              <h1>About Share 2 Social</h1>
+              <p>Share 2 Social was built because there is no easy way to embed the share button in the readme.md files of github and other repositories or on github wiki etc. Also whenever you put the social media provided sharing code, it not only loads very large javascript files for each social media, it also tracks all the visitors that come to your site. this causes not only a significant performance issue for your website, it is a serious threat to the privacy of your users. </p>
               <p></p>
                 <ul>
                     <li> <a href="https://share2social.com">Share this page</a> </li>
                     <li> <a href="https://github.com/gunjankarun/share2social">Github repository</a></li>
-                    <li> <a href="https://www.paypal.me/quadralyst">Donate and support opensource activities</a></li>
+                    <li> <a href="https://www.paypal.me/quadralyst">Donate and support my open source activities</a></li>
                     <li> <a href="https://github.com/gunjankarun/share2social/issues">Report issues or feature requests</a></li>
                     <li> <a href="https://linkedin.com/in/gunjankarun">My profile on LinkedIn (Gunjan Karun) </a></li>
                 </ul>

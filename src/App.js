@@ -144,6 +144,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    
     const ref_url = document.referrer;
     const my_url = window.location.href;
     // console.log('Ref URL is ', ref_url);

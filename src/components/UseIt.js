@@ -7,13 +7,22 @@ class UseIt extends Component {
         <div id="useit" className="container effect6">
           <div className="row">
             <div className="col-sm">
-              <h1> Use this page to share your website or repository too </h1>
+              <h1> Add a share button to github README.md file </h1>
               <p>Welcome to the easier way to let the visitors to your visitors or github repository, share your web pages or github repo without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.</p>
-              <h4>Super simple method</h4>
+              <p>This system works very well if </p>
+              <h4>In your README.md file</h4>
+              <p>In your github or other README.md file or wiki page, put a link to this page https://share2social.com. If you want to set a custom anchor text, use the following tag</p>
+              <div>
+                <code>
+                  [Click here to share this repo](https://share2social.com)
+                </code>
+              </div>
+              <br />
+              <h4>Super simple method for any html page</h4>
               <p>It could not get simpler than this. Just put a link to this page on your page, or copy and paste the following code on your web page. This page will get the referring url and extract necessary information from the title tag, meta tags and open graph meta tags from that web page.</p>
               <div>
                 <code>
-                  &lt;a href="https://linkshare.abc"&gt;Click here to share this page&lt;/a&gt;
+                  &lt;a href="https://share2social.com"&gt;Click here to share this page&lt;/a&gt;
                 </code>
               </div>
               <br />
@@ -21,7 +30,7 @@ class UseIt extends Component {
               <p>If you need to share a specific url, use a <b>url</b> parameter called url with the absolute url to share </p>
               <div>
                 <code>
-                  &lt;a href="https://linkshare.abc?url=http://yoursite.com"&gt;Click here to share this page&lt;/a&gt;
+                  &lt;a href="https://share2social.com?url=http://yoursite.com"&gt;Click here to share this page&lt;/a&gt;
                 </code>
               </div>
               <br />
@@ -34,7 +43,7 @@ class UseIt extends Component {
               </p>
               <div>
                 <code>
-                  &lt;a href="https://linkshare.abc?url=http://yourwebsite.com&title=Your title&description=Your description&image=https://yourwebsite.com/custom_image.png"&gt;Click here to share this page&lt;/a&gt;
+                  &lt;a href="https://share2social.com?url=http://yourwebsite.com&title=Your title&description=Your description&image=https://yourwebsite.com/custom_image.png"&gt;Click here to share this page&lt;/a&gt;
                 </code>
               </div>
             </div>
