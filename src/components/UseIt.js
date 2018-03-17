@@ -9,7 +9,7 @@ class UseIt extends Component {
             <div className="col-sm">
               <h1> Add a share button to github README.md file </h1>
               <p>Welcome to the easier way to let the visitors to your visitors or github repository, share your web pages or github repo without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.</p>
-              <p>This system works very well if </p>
+              <p>IMPORTANT: For this page to fetch the correct details, make sure that the meta tags (title, description and og:image) on your web page are correct. </p>
               <h4>In your README.md file</h4>
               <p>In your github or other README.md file or wiki page, put a link to this page https://share2social.com. If you want to set a custom anchor text, use the following tag</p>
               <div>
