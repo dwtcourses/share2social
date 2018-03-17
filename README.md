@@ -56,4 +56,7 @@ If you want to control the title, description and image that is being shared, yo
 *   [My profile on LinkedIn (Gunjan Karun)](https://linkedin.com/in/gunjankarun)
 
 # Credits
-Uses Free social media icons from <a href='https://www.freepik.com/free-vector/flat-social-media-icons-pack_871049.htm'>Social media icons designed by Freepik</a>
+1. Uses Free social media icons from <a href='https://www.freepik.com/free-vector/flat-social-media-icons-pack_871049.htm'>Social media icons designed by Freepik</a>
+
+2. Uses the Cors Anywhere Library by Rob Wu https://github.com/Rob--W/cors-anywhere/
+
