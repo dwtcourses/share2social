@@ -63,15 +63,15 @@ class Preview extends Component {
           <img className="align-self-start mr-3 site-preview" src={this.state.image} alt="Website  preview" onError={this.handleError.bind(this)} />
           <div className="media-body">
             <h5 className="mt-0 site-title">
-              <div contentEditable suppressContentEditableWarning onBlur={this.handleTitleChange.bind(this)} title="Click here to edit the title">
+              <div contentEditable suppressContentEditableWarning onBlur={this.handleTitleChange.bind(this)} title="Click here to edit the title before sharing">
                 {this.state.title}
               </div>
             </h5>
-            <div className="site_info" contentEditable suppressContentEditableWarning onBlur={this.handleDescriptionChange.bind(this)}>
+            <div className="site_info" contentEditable suppressContentEditableWarning onBlur={this.handleDescriptionChange.bind(this)} title="Click here to edit the description before sharing">
               {this.state.description}
             </div>
             <p>
-              URL: <span className="site-url" contentEditable suppressContentEditableWarning onBlur={this.handleUrlChange.bind(this)}>
+              URL: <span className="site-url" contentEditable suppressContentEditableWarning onBlur={this.handleUrlChange.bind(this)} title="Click here to update the URL before sharing">
                 {this.state.url}
               </span>
             </p>
