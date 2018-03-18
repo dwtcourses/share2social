@@ -4,8 +4,7 @@ import social_icons from '../images/social-icons.jpg';
 
 class ShareButton extends Component {
     handleClick(){
-        console.log('Clicked URL is ', this.props.url);
-        // this.show_popup(this.props.url);
+        this.show_popup(this.props.url);
     }
 
     show_popup(url){
