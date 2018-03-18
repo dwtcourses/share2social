@@ -1,47 +1,86 @@
 import React, { Component } from 'react';
 import './Preview.css';
+import img_notfound from '../images/no-image.png';
 
 class Preview extends Component {
-  // constructor() {
-  //   super();
-  // }
-
-  componentWillMount(){
-    // const state=Object.apply(this.props);
-    // this.setState(state);
-    // console.log('This state in preview is', state);
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: props.title,
+      url: props.url,
+      description: props.description,
+      image: props.image
+    };
   }
 
-  handleTitleClick(e){
-    // console.log('Title Clicked', e);
-    this.props.editTitle=true;
+  componentWillReceiveProps(props) {
+    let state = {
+      title: props.title,
+      url: props.url,
+      description: props.description,
+      image: props.image
+    };
+    this.setState(state);
+  }
+
+  componentDidMount(){
+    // console.log('------>component DID mount');
+  }
+
+  handleTitleChange(e){
+    this.setState({ title: e.target.innerHTML }, function stateUpdateComplete() {
+        this.props.contentChangedEvent(this.state);
+      }.bind(this));
+  }
+
+  handleDescriptionChange(e){
+    this.setState({ description: e.target.innerHTML }, function stateUpdateComplete() {
+        this.props.contentChangedEvent(this.state);
+      }.bind(this));
+  }
+
+  handleUrlChange(e){
+    this.setState({ url: e.target.innerHTML }, function stateUpdateComplete() {
+        this.props.contentChangedEvent(this.state);
+      }.bind(this));
+  }
+
+  handleImageChange(e){
+    console.log('todo: Image changes');
+    // this.setState({ image: e.target.value });
+  }
+
+  handleError(e) {
+    this.setState({
+      image: img_notfound
+    });
   }
 
   render() {
-    return (
-      <div id="preview" className="effect1">
+    return <div id="preview" className="effect1">
         {/* <h1>This is what you will be sharing</h1> */}
         <div className="media">
-          <img
-            className="align-self-start mr-3 site-preview"
-            src={this.props.image}
-            alt="Preview of {this.props.url}"
-          />
+          <img className="align-self-start mr-3 site-preview" src={this.state.image} alt="Website  preview" onError={this.handleError.bind(this)} />
           <div className="media-body">
             <h5 className="mt-0 site-title">
-              <div onClick={this.handleTitleClick.bind(this)} contentEditable={this.props.editTitle}>
-                {this.props.title}
+              <div contentEditable suppressContentEditableWarning onBlur={this.handleTitleChange.bind(this)} title="Click here to edit the title">
+                {this.state.title}
               </div>
             </h5>
-            <p className="site_info">{this.props.description}</p>
+            <div className="site_info" contentEditable suppressContentEditableWarning onBlur={this.handleDescriptionChange.bind(this)}>
+              {this.state.description}
+            </div>
             <p>
-              URL: <span className="site-url">{this.props.url}</span>
+              URL: <span className="site-url" contentEditable suppressContentEditableWarning onBlur={this.handleUrlChange.bind(this)}>
+                {this.state.url}
+              </span>
             </p>
-            {/* <p>Image: <span className="site-url">{this.props.image}</span></p> */}
+            {/* <p>
+              Image: <span className="site-url">{this.state.image}</span>
+            </p> */}
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 

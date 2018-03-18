@@ -84,12 +84,14 @@ class ShareButtons extends Component {
     const social_networks = this.state.sites;
     
     social_networks.map(site => {
-      return site.url = this.prepareURL(site.url);
+      return site.new_url = this.prepareURL(site.url);
     });
+
     this.setState(social_networks);
   }
 
   prepareURL(url) {
+    console.log('url in prepareURL is ', this.props.remoteSite.url);
     let template = '##url##';
     url = url.replace(new RegExp(template, 'g'), encodeURIComponent(this.props.remoteSite.url));
 
@@ -105,12 +107,15 @@ class ShareButtons extends Component {
     return url;
   }
 
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-
-  componentWillUnmount() {
-    this.props.onRef(undefined);
+  componentWillReceiveProps(props) {
+    let remoteSite = {
+      title: props.title,
+      url: props.url,
+      description: props.description,
+      image: props.image
+    };
+    console.log('Component is getting new prop', remoteSite);
+    this.setState({"remoteSite":remoteSite}, this.generateSocialUrls);
   }
 
   render() {
@@ -125,7 +130,7 @@ class ShareButtons extends Component {
                 name={site.name}
                 label={site.label}
                 icon={site.icon}
-                url={site.url}
+                url={site.new_url}
               />
             );
           })}
