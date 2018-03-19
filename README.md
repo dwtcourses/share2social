@@ -1,8 +1,8 @@
-# Share 2 Social : or how to add a share button to github README.md file
+# Share 2 Social : or how to add a share button to github README.md file or your website
 
 ===========================================
 
-Welcome to the easier way to let the visitors to your visitors or github repository, share your web pages or github repo without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.
+Welcome to the easier way to let the visitors share your web pages or github repo without adding any performance degrading bloatware code or privacy hijacking site tracking code from the various social media websites.
 
 To check it out in action, click https://share2social.com This will open the sharing page for this url.
 
@@ -18,7 +18,7 @@ This page will automatically identify the referring url, extract details from ti
 
 #### Super simple method for any html page
 
-It could not get simpler than this. Just put a link to this page on your page, or copy and paste the following code on your web page. This page will get the referring url and extract necessary information from the title tag, meta tags and open graph meta tags from that web page.
+It could not get simpler than this. Just put a link to this page on your html page, or copy and paste the following code on your web page. 
 
 `<a href="https://share2social.com">Click here to share this page</a>`
 
@@ -26,7 +26,7 @@ This page will automatically identify the referring url, extract details from ti
 
 #### Pass a url
 
-If you need to share a specific url, use a url parameter called **url** with the absolute url to share
+If no parameters are passed, it will fetch the information of the page on which this linked was clicked. If you need to share a different url from the page on which the user clicked this link, use a url parameter called **`url`** with the absolute url to share
 
 `<a href="https://share2social.com?url=http://yoursite.com">Click here to share this page</a>`
 
