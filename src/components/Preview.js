@@ -81,7 +81,7 @@ class Preview extends Component {
           </div>
         </div>
         <div className="alert alert-info info-alert" role="alert">
-          Tip: Click on the title and description to edit it.
+          Tip: Click on the title and description to edit it. Scroll down to see how you can use this free tool for your README.md file or web page.
         </div>
       </div>;
   }
