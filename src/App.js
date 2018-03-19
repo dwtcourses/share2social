@@ -147,13 +147,13 @@ class App extends Component {
     
     const ref_url = document.referrer;
     const my_url = window.location.href;
-    // console.log('Ref URL is ', ref_url);
-    console.log('My URL is ', my_url);
     const url_in_param = this.getParameterByName('url', my_url);
-    console.log('URL in param is ', url_in_param);
+    console.log('Param URL: ', url_in_param);
+    console.log('Ref URL: ', ref_url);
+    console.log('My URL: ', my_url);
 
     let site_url = url_in_param ? url_in_param : ref_url ? ref_url : my_url;
-    console.log('site_url  is ', site_url);
+    console.log('Site URL: ', site_url);
     this.fetchExternalHTML(site_url, my_url);
   }
 
